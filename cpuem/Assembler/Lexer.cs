@@ -67,7 +67,8 @@ namespace cpuem.Assembler
                     "literal cannot be at end of file",
                     sr.BaseStream.Position);
 
-            if (!is_whitespace(c))
+            if (!is_whitespace(c)
+                && !is_punctuation(c))
                 throw new LexerException(
                     "literal was malformed",
                     sr.BaseStream.Position);
@@ -107,12 +108,28 @@ namespace cpuem.Assembler
                     "identifier cannot be at end of file",
                     sr.BaseStream.Position);
 
-            if (!is_whitespace(c))
+            if (!is_whitespace(c)
+                && !is_punctuation(c))
                 throw new LexerException(
                     "identifier was malformed",
                     sr.BaseStream.Position);
 
             return new IdentifierToken(sb.ToString());
+        }
+
+        bool is_punctuation(char c)
+        {
+            switch (c)
+            {
+                case '.': 
+                case ':': 
+                case '(': 
+                case ')': 
+                case '{':
+                case '}':
+                    return true;
+            }
+            return false;
         }
 
         PunctuationToken is_punctuation(StreamReader sr)
@@ -160,6 +177,11 @@ namespace cpuem.Assembler
 
         readonly List<IToken> tokens;
 
+        public Lexer(IEnumerable<IToken> tokens)
+        {
+            this.tokens = tokens.ToList();
+        }
+
         public Lexer(string sourcefile)
         {
             if (!File.Exists(sourcefile))
@@ -194,6 +216,9 @@ namespace cpuem.Assembler
                         tokens.Add(token);
                         continue;
                     }
+                    throw new LexerException(
+                        "unknown token",
+                        sr.BaseStream.Position);
                 }
             }
         }
