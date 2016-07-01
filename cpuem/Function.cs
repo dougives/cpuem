@@ -7,7 +7,7 @@ using cpuem.InstructionSet;
 
 namespace cpuem
 {
-    class Function
+    public class Function
     {
         const int MAX_CODE_LENGTH = 0x1000;
         public readonly Hash hash;

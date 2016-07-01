@@ -13,6 +13,13 @@ namespace cpuem.InstructionSet
         Hash imm = null;
         int argsize = 0;
 
+        public MessageInstruction(Function function, int argsize = 0)
+        {
+            this.imm = function.hash;
+            this.hasimm = true;
+            this.argsize = argsize;
+        }
+
         internal MessageInstruction(byte[] rawcode, int offset = 0)
         {
             length = 2;

@@ -8,7 +8,7 @@ using System.IO;
 
 namespace cpuem
 {
-    class Hash
+    public class Hash
     {
         public const int HASH_SIZE = 32;
         static readonly SHA256 sha;
