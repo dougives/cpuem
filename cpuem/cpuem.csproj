@@ -47,7 +47,11 @@
     <Compile Include="Assembler\Token.cs" />
     <Compile Include="Function.cs" />
     <Compile Include="Hash.cs" />
+    <Compile Include="InstructionSet\BranchInstruction.cs" />
     <Compile Include="InstructionSet\Instruction.cs" />
+    <Compile Include="InstructionSet\InstructionException.cs" />
+    <Compile Include="InstructionSet\MessageInstruction.cs" />
+    <Compile Include="InstructionSet\OperationInstruction.cs" />
     <Compile Include="Interpreter.cs" />
     <Compile Include="InstructionSet\OpMap.cs" />
     <Compile Include="Node.cs" />

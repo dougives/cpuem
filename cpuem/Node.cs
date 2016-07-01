@@ -8,5 +8,6 @@ namespace cpuem
 {
     class Node
     {
+        public readonly Hash hash;
     }
 }

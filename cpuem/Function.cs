@@ -10,7 +10,7 @@ namespace cpuem
     class Function
     {
         const int MAX_CODE_LENGTH = 0x1000;
-        readonly Hash hash;
+        public readonly Hash hash;
         readonly List<Instruction> instructions;
 
         public Function(byte[] rawcode)
